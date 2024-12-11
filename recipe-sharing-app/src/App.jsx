@@ -2,12 +2,60 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import React from 'react';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import RecipeList from './components/RecipeList';
+import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
+import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
+
+
+const App = () => {
+  return (
+    <div style={{ padding: '20px' }}>
+      <h1>Recipe Sharing Application</h1>
+      <FavoritesList />
+      <RecommendationsList />
+      <SearchBar />
+      <RecipeList />
+      <AddRecipeForm />
+    </div>
+  );
+};
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const App = () => {
+    return (
+      <div style={{ padding: '20px' }}>
+        <h1>Recipe Sharing Application</h1>
+        <SearchBar />
+        <RecipeList />
+        <AddRecipeForm />
+      </div>
+    );
+  };
+
   return (
     <>
+    <Router>
+      <div>
+        <h1>Recipe Sharing Application</h1>
+        <Routes>
+          <Route path="/" element={<RecipeList />} />
+          <Route path="/add" element={<AddRecipeForm />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
+        </Routes>
+      </div>
+    </Router>
+
+      <AddRecipeForm />
+      <RecipeList />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
