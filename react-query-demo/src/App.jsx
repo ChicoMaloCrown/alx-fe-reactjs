@@ -3,6 +3,27 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import PostsComponent from './PostsComponent';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+<QueryClientProvider client={queryClient}>
+  <PostsComponent />
+  <ReactQueryDevtools initialIsOpen={false} />
+</QueryClientProvider>
+
+
+const queryClient = new QueryClient();
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <PostsComponent />
+    </QueryClientProvider>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0)
 
